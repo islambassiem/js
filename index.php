@@ -4,6 +4,7 @@ $stmt = $conn->prepare("SELECT * FROM users ORDER BY rand()");
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +12,13 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Document</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	<link rel="stylesheet" href="main.css" />
+	<link rel="stylesheet" href="timer.css" />
 </head>
 
 <body>
 	<div class="upper">
-		<div class=round><input type=checkbox id=onoff name=onoff checked/>
+		<div class=round><input type=checkbox id=onoff name=onoff checked />
 			<div class=back><label class=but for=onoff><span class=on>Start</span><span class=off>Stop</span></label></div>
 		</div>
 		<button id="start">Start</button>
@@ -34,13 +35,18 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-	<script>
+	<script src="main.js"></script>
+	<!-- <script src="timer.js"></script> -->
+	<!-- <script>
 		var clear;
 		var current = 1;
 		var height = $('.names').height();
 		var numNames = $('.names').children().length;
 		var first = $('.names div:nth-child(1)');
-
+		var horror = new Audio('audio/action.mp3');
+		var suspense = new Audio('audio/suspense.mp3');
+		var congrats = new Audio('audio/congrats.mp3');
+		var crowd = new Audio('audio/crowd.mp3');
 		document.getElementById('start').addEventListener('click', () => {
 			document.getElementById('placeholder').style.display = 'none';
 			document.getElementById('names').style.display = 'block';
@@ -52,6 +58,9 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 					current = 1;
 				} else current++;
 			}, 100);
+			setTimeout(() => {
+				stop();
+			}, 10000);
 		});
 
 		document.getElementById('stop').addEventListener('click', () => {
@@ -63,20 +72,45 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 					first.css('margin-top', '0px');
 					current = 1;
 				} else current++;
-			}, 500);
+			}, 1000);
 			setTimeout(() => {
 				clearInterval(interval);
-			}, 3000);
+				suspense.pause();
+				suspense.currentTime = 0;
+				congrats.play();
+				setTimeout(() => {
+					crowd.play();
+				}, 2000);
+			}, 5000);
 		});
 
+		function stop() {
+			document.getElementById('stop').click();
+			document.querySelector('input').checked = 'false';
+			horror.pause();
+			horror.currentTime = 0;
+			suspense.play();
+		}
+
 		let input = document.querySelector('input');
-		input.addEventListener('click', function(){
-			if(this.checked)
-				document.getElementById('stop').click();
-			else
-			document.getElementById('start').click();
-		})
-	</script>
+		input.addEventListener('click', function() {
+			if (this.checked) {
+				stop()
+			} else {
+				document.getElementById('start').click();
+				horror.play();
+			}
+		});
+
+		var timeleft = 10;
+		var downloadTimer = setInterval(function() {
+			if (timeleft <= 0) {
+				clearInterval(downloadTimer);
+			}
+			document.getElementById("progressBar").value = 10 - timeleft;
+			timeleft -= 1;
+		}, 1000);
+	</script> -->
 </body>
 
 </html>
