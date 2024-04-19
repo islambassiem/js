@@ -174,5 +174,5 @@ body {
 .names div {
   height: 50px;
   text-transform: uppercase;
-  transition: margin-top 0.3s;
+  transition: margin-top 3s;
 }

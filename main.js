@@ -7,7 +7,9 @@ var horror = new Audio("audio/action.mp3");
 var suspense = new Audio("audio/suspense.mp3");
 var congrats = new Audio("audio/congrats.mp3");
 var crowd = new Audio("audio/crowd.mp3");
-
+var names = $('.names').children();
+var secondsAfterStop = 5;
+var winnerIndex;
 
 
 document.getElementById("start").addEventListener("click", () => {
@@ -20,10 +22,7 @@ document.getElementById("start").addEventListener("click", () => {
       first.css("margin-top", "0px");
       current = 1;
     } else current++;
-  }, 500);
-  setTimeout(() => {
-    stop();
-  }, 20000);
+  }, 100);
 });
 
 document.getElementById("stop").addEventListener("click", () => {
@@ -40,11 +39,13 @@ document.getElementById("stop").addEventListener("click", () => {
     clearInterval(interval);
     suspense.pause();
     suspense.currentTime = 0;
-    congrats.play();
+		setTimeout(() => {
+			congrats.play();
+		}, 1500);
     setTimeout(() => {
       crowd.play();
     }, 2000);
-  }, 5000);
+  }, secondsAfterStop * 1000);
 });
 
 function stop() {
@@ -53,6 +54,8 @@ function stop() {
   horror.pause();
   horror.currentTime = 0;
   suspense.play();
+	winnerIndex = parseInt(names[0].style.marginTop.substring(1).replace("px", "")) / height + secondsAfterStop;
+	console.log(names[winnerIndex]);
 }
 
 document.querySelector("input").addEventListener("click", function () {
