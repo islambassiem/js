@@ -20,7 +20,7 @@ document.getElementById("start").addEventListener("click", () => {
       first.css("margin-top", "0px");
       current = 1;
     } else current++;
-  }, 100);
+  }, 500);
   setTimeout(() => {
     stop();
   }, 20000);

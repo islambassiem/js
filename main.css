@@ -1,6 +1,7 @@
 input, #start, #stop {
   display: none;
 }
+
 .on,
 .off {
   position: absolute;
@@ -19,6 +20,7 @@ input, #start, #stop {
   -webkit-transition: all 0.1s;
   transform: scaleY(0.85);
 }
+
 .but {
   background-color: #272727;
   border-radius: 400px 400px 400px 400px / 400px 400px 300px 300px;
@@ -36,6 +38,7 @@ input, #start, #stop {
   -webkit-transition: all 0.2s;
   width: 200px;
 }
+
 .back {
   background-color: black;
   background-image: -webkit-linear-gradient(
@@ -79,16 +82,19 @@ input:checked + .back .on,
 input:checked + .back .off {
   text-shadow: inset 1px 1px 1px black;
 }
+
 input:checked + .back .on {
   color: #999;
   top: 10px;
   -webkit-transform: scaleY(0.85);
 }
+
 input:checked + .back .off {
   color: #bbb;
   bottom: 5px;
   -webkit-transform: scaleY(1);
 }
+
 input:checked + .back .but {
   background: #232323;
   background-image: -webkit-radial-gradient(
@@ -106,6 +112,7 @@ input:checked + .back .but {
     inset 0 -200px 40px -200px rgba(180, 180, 180, 0.2);
   margin-top: 20px;
 }
+
 input:checked + .back {
   background-image: -webkit-linear-gradient(90deg, black 30%, transparent 70%),
     -webkit-linear-gradient(180deg, rgba(250, 250, 250, 0) 0%, rgba(
@@ -120,11 +127,13 @@ input:checked + .back {
     inset 0 1px 2px 0 rgba(0, 0, 0, 0.6);
   padding: 2px 4px;
 }
+
 .l,
 .r {
   margin: 0 auto;
   text-align: center;
 }
+
 .round,
 #onoff,
 .back,
@@ -137,13 +146,10 @@ input:checked + .back {
 body {
   background: #000000;
   font-family: sans-serif;
-
 	color:white;
 }
 
-
 .wrapper {
-  padding: 100px 0 100px;
   width: 100%;
   display: block;
   text-align: center;
@@ -164,6 +170,7 @@ body {
 	color: #00ff62;
   height: 50px;
 }
+
 .names div {
   height: 50px;
   text-transform: uppercase;
