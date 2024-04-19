@@ -13,6 +13,9 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Document</title>
 	<link rel="stylesheet" href="main.css" />
+	<link rel="stylesheet" href="box/box.css" />
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" -->
+  />
 </head>
 
 <body>
@@ -32,6 +35,13 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 			}
 			?>
 		</div>
+	</div>
+	<div class="board">
+		<div class="box" id="box">
+			<div class="lid"><span class="ribbon"></span>&nbsp;</div>
+			<div class="body">&nbsp;</div>
+		</div>
+		<!-- <button id="button">Open</button> -->
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="main.js"></script>

@@ -1,0 +1,142 @@
+/* html, body {
+	height: 100%;
+}
+body {
+	text-align: center;
+	background: #fafafa;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+} */
+.board {
+	/* display: inline-block; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px;
+}
+.box {
+	margin: 100px 50px 50px;
+	height: 200px;
+	width: 200px;
+	position: relative;
+	box-sizing: border-box;
+}
+.box.open .lid {
+	transform: translate(95%, -35%) rotate(180deg);
+}
+.box.open .contents {
+	top: -50px;
+	width: 200%;
+	margin: 0 -50%;
+	font-size: 35px;
+}
+.box, .lid, .body, .contents {
+	box-sizing: border-box;
+}
+.lid {
+	position: absolute;
+	width: 110%;
+	height: 30%;
+	background: #0e3051;
+	margin: 0 -5%;
+	transition: all 0.7s ease;
+	z-index: 200;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.4);
+	border: 5px solid #676767;
+	border-bottom: 0;
+}
+.lid:before {
+	content: '';
+	display: block;
+	height: 100%;
+	width: 56px;
+	border-left: 5px solid #676767;
+	border-right: 5px solid #676767;
+	background: #2aaae6;
+	margin: 0 auto;
+}
+.lid:after {
+	content: '';
+	display: block;
+	background: #2aaae6;
+	position: absolute;
+	margin-top: 0;
+	margin-left: -10px;
+	top: -22px;
+	left: 50%;
+	z-index: 190;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	border: 3px solid #676767;
+}
+.lid .ribbon {
+	top: 0;
+	margin-top: -55px;
+	height: 50px;
+	display: block;
+	width: 100%;
+	position: absolute;
+	overflow: hidden;
+	z-index: 180;
+}
+.lid .ribbon:before, .lid .ribbon:after {
+	content: '';
+	position: absolute;
+	display: block;
+	height: 50px;
+	width: 50px;
+	top: 50%;
+	border-radius: 50%;
+	background: #2aaae6;
+	border: 5px solid #676767;
+}
+.lid .ribbon:before {
+	left: 50%;
+}
+.lid .ribbon:after {
+	right: 50%;
+}
+.body {
+	height: 80%;
+	position: absolute;
+	z-index: 150;
+	bottom: 0;
+	width: 100%;
+	border: 5px solid #676767;
+	background: #0e3051;
+}
+.body:before {
+	content: '';
+	display: block;
+	height: 100%;
+	width: 50px;
+	border-left: 5px solid #676767;
+	border-right: 5px solid #676767;
+	background: #2aaae6;
+	margin: 0 auto;
+}
+.contents {
+	position: absolute;
+	width: 100%;
+	font-weight: bold;
+	white-space: nowrap;
+	text-align: center;
+	top: 30%;
+	padding: 15px;
+	font-size: 16px;
+	transition: all 0.7s ease;
+}
+button {
+	border: 0;
+	display: block;
+	width: 100%;
+	padding: 15px;
+	background: #c27028;
+	color: #fff;
+	border-radius: 5px;
+	font-size: 2rem;
+}

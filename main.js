@@ -8,6 +8,7 @@ var suspense = new Audio("audio/suspense.mp3");
 var congrats = new Audio("audio/congrats.mp3");
 var crowd = new Audio("audio/crowd.mp3");
 var names = $('.names').children();
+const box = document.getElementById('box');
 var secondsAfterStop = 5;
 var winnerIndex;
 
@@ -55,6 +56,17 @@ function stop() {
   horror.currentTime = 0;
   suspense.play();
 	winnerIndex = parseInt(names[0].style.marginTop.substring(1).replace("px", "")) / height + secondsAfterStop;
+	box.classList.add('open');
+	setTimeout(() => {
+		names[winnerIndex].classList.add('winner', 'go-inside');
+		for (let winnerIndex = 0; winnerIndex < names.length; winnerIndex++) {
+			if(names[winnerIndex].classList.contains('go-inside')) continue;
+			names[winnerIndex].style.display = 'none';
+		}
+	}, 20000);
+	setTimeout(() => {
+		box.classList.remove('open');
+	}, 22000);
 	console.log(names[winnerIndex]);
 }
 
