@@ -2,7 +2,7 @@ const semicircles = document.querySelectorAll('.semicircle');
 const timer = document.querySelector('.timer');
 const hr = 0; 
 const min = 0; 
-const sec = 0; 
+const sec = 21; 
 const hours = hr * 3600000;
 const minutes = min * 60000;
 const seconds = sec * 1000;
@@ -33,7 +33,13 @@ function countDownTimer(){
 	const mins = Math.floor(remainingTime / ( 1000 * 60 ) % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
 	const secs = Math.floor(remainingTime / ( 1000 ) % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
 
-	timer.innerHTML  = `<div>${secs}</div>`;
+	timer.innerHTML  = `
+		<div>${hrs}</div>
+		<div class="colon">:</div>
+		<div>${mins}</div>
+		<div class="colon">:</div>
+		<div>${secs}</div>
+	`;
 
 	// 5 seconds
 	if(remainingTime <= 6000){
@@ -49,7 +55,13 @@ function countDownTimer(){
 		semicircles[1].style.display = 'none';
 		semicircles[2].style.display = 'none';
 
-		timer.innerHTML  = `<div>00</div>`;
+		timer.innerHTML  = `
+		<div>00</div>
+		<div class="colon">:</div>
+		<div>00</div>
+		<div class="colon">:</div>
+		<div>00</div>
+	`;
 
 	timer.style.color = 'lightgrey';
 	}

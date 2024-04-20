@@ -14,16 +14,32 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 	<title>Document</title>
 	<link rel="stylesheet" href="main.css" />
 	<link rel="stylesheet" href="box/box.css" />
+	<link rel="stylesheet" href="timer/timer.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
 	<div class="upper">
-		<div class=round><input type=checkbox id=onoff name=onoff checked />
-			<div class=back><label class=but for=onoff><span class=on>Start</span><span class=off>Stop</span></label></div>
+		<div class="button">
+			<div class=round><input type=checkbox id=onoff name=onoff checked />
+				<div class=back><label class=but for=onoff><span class=on>Start</span><span class=off>Stop</span></label></div>
+			</div>
+			<button id="start">Start</button>
+			<button id="stop">Stop</button>
 		</div>
-		<button id="start">Start</button>
-		<button id="stop">Stop</button>
+		<div class="main-container center">
+			<!-- progress indicator -->
+			<div class="circle-container center ">
+				<div class="semicircle"></div>
+				<div class="semicircle"></div>
+				<div class="semicircle"></div>
+				<div class="outermost-circle"></div>
+			</div>
+			<!-- timer -->
+			<div class="timer-container center">
+				<div class="timer center"></div>
+			</div>
+		</div>
 	</div>
 	<div class="refresh">
 	<i class="fa fa-refresh fa-spin"></i>

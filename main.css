@@ -149,6 +149,12 @@ body {
 	color:white;
 }
 
+.upper{
+	display: flex;
+	justify-content:space-around;
+	align-items: center;
+}
+
 .refresh{
 	display: none;
 	justify-content: center;
