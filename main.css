@@ -149,6 +149,17 @@ body {
 	color:white;
 }
 
+.refresh{
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.refresh i{
+	font-size:100px;
+	color:#00ff62
+}
+
 .wrapper {
   width: 100%;
   display: block;

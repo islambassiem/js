@@ -14,8 +14,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 	<title>Document</title>
 	<link rel="stylesheet" href="main.css" />
 	<link rel="stylesheet" href="box/box.css" />
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" -->
-  />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -25,6 +24,9 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 		</div>
 		<button id="start">Start</button>
 		<button id="stop">Stop</button>
+	</div>
+	<div class="refresh">
+	<i class="fa fa-refresh fa-spin"></i>
 	</div>
 	<div class="wrapper">
 		<div class="name" id="placeholder">Next Lucky Winner</div>

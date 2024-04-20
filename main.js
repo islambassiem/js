@@ -65,7 +65,10 @@ function stop() {
 		}
 	}, 20000);
 	setTimeout(() => {
+		crowd.pause();
 		box.classList.remove('open');
+		document.querySelector('.refresh').style.display = 'flex';
+		document.querySelector('.board').style.marginTop = '0px';
 	}, 22000);
 	console.log(names[winnerIndex]);
 }
@@ -77,5 +80,9 @@ document.querySelector("input").addEventListener("click", function () {
     document.getElementById("start").click();
     horror.play();
   }
+});
+
+document.querySelector('.refresh').addEventListener('click', function(){
+	location.reload();
 });
 
