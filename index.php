@@ -75,7 +75,7 @@ $gift = $g->fetch(PDO::FETCH_OBJ);
 		<div class="box" id="box">
 			<div class="lid"><span class="ribbon"></span>&nbsp;</div>
 			<div class="body">&nbsp;</div>
-			<div class="contents"><img class="img" src="<?= $gift->link ?>" alt="gift"></div>
+			<div class="contents"><img class="img" src="<?= $gift->link ?>" alt="<?= $gift->gift ?>"></div>
 		</div>
 		<!-- <button id="button">Open</button> -->
 	</div>

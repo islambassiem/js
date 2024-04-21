@@ -111,9 +111,20 @@ function stop() {
 	semicircles[0].style.display = 'none';
 	semicircles[1].style.display = 'none';
 	semicircles[2].style.display = 'none';
-	console.log(names[winnerIndex]);
-}
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", 'removeUser.php', true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	var params = {
+		name: names[winnerIndex].innerHTML,
+		gift: document.querySelector('img').getAttribute('alt')
+	};
+	var data = Object.keys(params).map(function(key) {
+		return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+	}).join('&');
 
+	xhr.send(data);
+	console.log(names[winnerIndex].innerHTML);
+}
 document.querySelector("input").addEventListener("click", function () {
   if (this.checked) {
     stop();
