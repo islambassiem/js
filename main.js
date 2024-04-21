@@ -180,7 +180,7 @@ function matrixEffect() {
 	setInterval(function () {
 		updateMatrix();
 		drawMatrix();
-	}, 200); // Adjust the speed here
+	}, 200000); // Adjust the speed here
 
 	// Adjust the size and position of the container
 	container.style.height = containerHeight + "px";

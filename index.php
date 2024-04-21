@@ -1,8 +1,23 @@
 <?php
 include_once 'connect.php';
+
+
 $stmt = $conn->prepare("SELECT * FROM users where active = 1 ORDER BY rand()");
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+
+$n = 1;
+
+if(isset($_GET['gift'])){
+	$n = $_GET['gift'];
+}
+
+$g = $conn->prepare("SELECT * FROM gifts where id = ?");
+$g->execute([$n]);
+$gift = $g->fetch(PDO::FETCH_OBJ);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +30,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 	<link rel="stylesheet" href="main.css" />
 	<link rel="stylesheet" href="box/box.css" />
 	<link rel="stylesheet" href="timer/timer.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
@@ -44,7 +59,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 		</div>
 	</div>
 	<div class="refresh">
-	<i class="fa fa-refresh fa-spin"></i>
+	<a href="index?gift=<?= ($n + 1)?>"><i class="fa-regular fa-hand-point-right"></i></a>
 	</div>
 	<div class="wrapper">
 		<div class="name" id="placeholder">Next Lucky Winner</div>
@@ -60,7 +75,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 		<div class="box" id="box">
 			<div class="lid"><span class="ribbon"></span>&nbsp;</div>
 			<div class="body">&nbsp;</div>
-			<div class="contents">Your Gift</div>
+			<div class="contents"><img class="img" src="<?= $gift->link ?>" alt="gift"></div>
 		</div>
 		<!-- <button id="button">Open</button> -->
 	</div>

@@ -30,7 +30,7 @@ body {
 .box.open .contents {
 	top: -50px;
 	width: 200%;
-	margin: 0 -50%;
+	margin: 0 -100%;
 	font-size: 35px;
 }
 .box, .lid, .body, .contents {
