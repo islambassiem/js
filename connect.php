@@ -1,11 +1,14 @@
 <?php
 
 $dsn    = 'mysql:host=localhost; dbname=party;charset=utf8';
-// $user   = 'admin';
-// $pass   = 'IBA0274#5325i';
 
-$user   = 'root';
-$pass   = '';
+if($_SERVER['SERVER_NAME'] == 'party.csmonline.net'){
+	$user   = 'admin';
+	$pass   = 'IBA0274#5325i';
+}else{
+	$user   = 'root';
+	$pass   = '';
+}
 
 try {
 	$conn = new PDO($dsn, $user, $pass);
