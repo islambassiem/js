@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrix Effect</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: black;
+      }
+      #matrix {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: green;
+        font-family: monospace;
+        font-size: 16px;
+        width: 100%;
+        height: 100%;
+        line-height: 20px; /* Adjust line height to match font size */
+      }
+      #container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 20px; /* Adjust the height of the container */
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.5
+        ); /* Transparent white (adjust alpha value as needed) */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="matrix"></div>
+    <div id="container"></div>
+
+    <script>
+      function getRandomName(names) {
+        return names[Math.floor(Math.random() * names.length)];
+      }
+
+      function matrixEffect() {
+        var matrixContainer = document.getElementById("matrix");
+        var container = document.getElementById("container");
+        var containerWidth = window.innerWidth;
+        var containerHeight = 20; // Adjust the height of the container
+        var columns = Math.floor(containerWidth / 10);
+        var rows = Math.floor(window.innerHeight / 20); // Adjusted for font size
+        var matrix = [];
+
+        var names = [
+          "Alice",
+          "Bob",
+          "Charlie",
+          "David",
+          "Eve",
+          "Frank",
+          "Grace",
+          "Harry",
+          "Ivy",
+          "Jack",
+        ];
+
+        // Initialize matrix with random names
+        for (var i = 0; i < rows; i++) {
+          matrix[i] = [];
+          for (var j = 0; j < columns; j++) {
+            matrix[i][j] = getRandomName(names);
+          }
+        }
+
+        function drawMatrix() {
+          var html = "";
+          for (var i = 0; i < rows; i++) {
+            for (var j = 0; j < columns; j++) {
+              html += matrix[i][j] + "&nbsp;&nbsp;&nbsp;"; // Increase the spacing here
+            }
+            html += "<br>";
+          }
+          matrixContainer.innerHTML = html;
+        }
+
+        function updateMatrix() {
+          // Shift matrix down by one row
+          matrix.unshift(new Array(columns).fill(""));
+          matrix.pop(); // Remove the last row
+          // Randomly set names for the new top row
+          for (var j = 0; j < columns; j++) {
+            matrix[0][j] = getRandomName(names);
+          }
+        }
+
+        setInterval(function () {
+          updateMatrix();
+          drawMatrix();
+        }, 200); // Adjust the speed here
+
+        // Adjust the size and position of the container
+        container.style.height = containerHeight + "px";
+        container.style.width = containerWidth + "px";
+      }
+
+      window.onload = function () {
+        matrixEffect();
+      };
+    </script>
+  </body>
+</html>

@@ -1,11 +1,11 @@
 <?php
 
-$dsn    = 'mysql:host=localhost; dbname=u426787650_2023party;charset=utf8';
-// $user   = 'u426787650_islambassiem';
-// $pass   = 'IBA0274#5325i';
+$dsn    = 'mysql:host=localhost; dbname=party;charset=utf8';
+$user   = 'admin';
+$pass   = 'IBA0274#5325i';
 
-$user   = 'root';
-$pass   = '';
+// $user   = 'root';
+// $pass   = '';
 
 try {
 	$conn = new PDO($dsn, $user, $pass);

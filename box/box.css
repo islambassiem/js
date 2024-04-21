@@ -18,14 +18,14 @@ body {
 	margin-top: 100px;
 }
 .box {
-	margin: 100px 50px 50px;
+	margin: 150px 50px 50px;
 	height: 200px;
 	width: 200px;
 	position: relative;
 	box-sizing: border-box;
 }
 .box.open .lid {
-	transform: translate(95%, -35%) rotate(180deg);
+	transform: translate(100%, 69%) rotate(180deg);
 }
 .box.open .contents {
 	top: -50px;

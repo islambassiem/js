@@ -20,9 +20,9 @@ const semicircles = document.querySelectorAll('.semicircle');
 document.getElementById("start").addEventListener("click", () => {
   document.getElementById("placeholder").style.display = "none";
   document.getElementById("names").style.display = "block";
+	timer.style.color = 'white';
 	timerLoop = setInterval(function() {
 		time--;
-		console.log(time);
 		let angle = (time / 20) * 360;
 		if(angle > 180){
 			semicircles[0].style.transform = 'rotate(180deg)';
@@ -43,7 +43,7 @@ document.getElementById("start").addEventListener("click", () => {
 		if(time <= 5){
 			semicircles[0].style.backgroundColor = "red";
 			semicircles[1].style.backgroundColor = "red";
-			timer.style.color = "red";
+			timer.style.color = "white";
 		}
 	}, 1000);
   clear = setInterval(() => {
@@ -107,7 +107,7 @@ function stop() {
 	}, 22000);
 	clearInterval(timerLoop);
 	timer.innerHTML  = `<div>00</div>`;
-	timer.style.color = 'red';
+	timer.style.color = 'white';
 	semicircles[0].style.display = 'none';
 	semicircles[1].style.display = 'none';
 	semicircles[2].style.display = 'none';
@@ -126,3 +126,67 @@ document.querySelector("input").addEventListener("click", function () {
 document.querySelector('.refresh').addEventListener('click', function(){
 	location.reload();
 });
+
+
+// Matrix
+function getRandomName(names) {
+	return names[Math.floor(Math.random() * names.length)];
+}
+
+function matrixEffect() {
+	var matrixContainer = document.getElementById("matrix");
+	var container = document.getElementById("container");
+	var containerWidth = window.innerWidth;
+	var containerHeight = 20; // Adjust the height of the container
+	var columns = Math.floor(containerWidth / 10);
+	var rows = Math.floor(window.innerHeight / 20); // Adjusted for font size
+	var matrix = [];
+
+	var names = [];
+
+	for (let i = 0; i < $('.names').children().length; i++) {
+		names.push(($('.names').children())[i].innerHTML)
+	}
+
+	// Initialize matrix with random names
+	for (var i = 0; i < rows; i++) {
+		matrix[i] = [];
+		for (var j = 0; j < columns; j++) {
+			matrix[i][j] = getRandomName(names);
+		}
+	}
+
+	function drawMatrix() {
+		var html = "";
+		for (var i = 0; i < rows; i++) {
+			for (var j = 0; j < columns; j++) {
+				html += matrix[i][j] + "&nbsp;&nbsp;&nbsp;"; // Increase the spacing here
+			}
+			html += "<br>";
+		}
+		matrixContainer.innerHTML = html;
+	}
+
+	function updateMatrix() {
+		// Shift matrix down by one row
+		matrix.unshift(new Array(columns).fill(""));
+		matrix.pop(); // Remove the last row
+		// Randomly set names for the new top row
+		for (var j = 0; j < columns; j++) {
+			matrix[0][j] = getRandomName(names);
+		}
+	}
+
+	setInterval(function () {
+		updateMatrix();
+		drawMatrix();
+	}, 200); // Adjust the speed here
+
+	// Adjust the size and position of the container
+	container.style.height = containerHeight + "px";
+	container.style.width = containerWidth + "px";
+}
+
+window.onload = function () {
+	matrixEffect();
+};

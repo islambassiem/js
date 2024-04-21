@@ -1,6 +1,6 @@
 <?php
 include_once 'connect.php';
-$stmt = $conn->prepare("SELECT * FROM users ORDER BY rand()");
+$stmt = $conn->prepare("SELECT * FROM users where active = 1 ORDER BY rand()");
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 ?>
@@ -19,6 +19,8 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 </head>
 
 <body>
+	<div id="matrix"></div>
+	<div id="container"></div>
 	<div class="upper">
 		<div class="button">
 			<div class=round><input type=checkbox id=onoff name=onoff checked />
@@ -58,6 +60,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
 		<div class="box" id="box">
 			<div class="lid"><span class="ribbon"></span>&nbsp;</div>
 			<div class="body">&nbsp;</div>
+			<div class="contents">Your Gift</div>
 		</div>
 		<!-- <button id="button">Open</button> -->
 	</div>
