@@ -12,10 +12,11 @@ var box = document.getElementById('box');
 var secondsAfterStop = 5;
 let timerLoop;
 var winnerIndex;
-var time = 20;
+var time = 30;
 let timer = document.querySelector('.timer');
 timer.innerHTML = time;
 const semicircles = document.querySelectorAll('.semicircle');
+const image = document.querySelector('.img')
 
 document.getElementById("start").addEventListener("click", () => {
   document.getElementById("placeholder").style.display = "none";
@@ -23,7 +24,7 @@ document.getElementById("start").addEventListener("click", () => {
 	timer.style.color = 'white';
 	timerLoop = setInterval(function() {
 		time--;
-		let angle = (time / 20) * 360;
+		let angle = (time / 30) * 360;
 		if(angle > 180){
 			semicircles[0].style.transform = 'rotate(180deg)';
 			semicircles[1].style.transform = `rotate(${angle}deg)`;
@@ -80,7 +81,7 @@ document.getElementById("stop").addEventListener("click", () => {
 		}, 1500);
     setTimeout(() => {
       crowd.play();
-    }, 2000);
+    }, 3000);
   }, secondsAfterStop * 1000);
 });
 
@@ -92,19 +93,21 @@ function stop() {
   suspense.play();
 	winnerIndex = parseInt(names[0].style.marginTop.substring(1).replace("px", "")) / height + secondsAfterStop;
 	box.classList.add('open');
+	image.classList.add('photo');
 	setTimeout(() => {
 		names[winnerIndex].classList.add('winner', 'go-inside');
 		for (let winnerIndex = 0; winnerIndex < names.length; winnerIndex++) {
 			if(names[winnerIndex].classList.contains('go-inside')) continue;
 			names[winnerIndex].style.display = 'none';
 		}
-	}, 20000);
+	}, 30000);
 	setTimeout(() => {
 		crowd.pause();
 		box.classList.remove('open');
+		image.classList.remove('photo');
 		document.querySelector('.refresh').style.display = 'flex';
 		document.querySelector('.board').style.marginTop = '0px';
-	}, 22000);
+	}, 32000);
 	clearInterval(timerLoop);
 	timer.innerHTML  = `<div>00</div>`;
 	timer.style.color = 'white';
@@ -191,7 +194,7 @@ function matrixEffect() {
 	setInterval(function () {
 		updateMatrix();
 		drawMatrix();
-	}, 200000); // Adjust the speed here
+	}, 200); // Adjust the speed here
 
 	// Adjust the size and position of the container
 	container.style.height = containerHeight + "px";

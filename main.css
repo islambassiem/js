@@ -236,9 +236,11 @@ body {
 }
 
 .img{
-	max-width: 250px;
-	max-height: 250px;
+	width: 200px;
+	height: 200px;
+	text-align: center;
 }
+
 
 
 @keyframes fadeInsideBox {
@@ -263,4 +265,29 @@ body {
 	animation-iteration-count: 1;
 	animation-direction: normal;
 	animation-fill-mode: both;
+}
+
+.photo{
+	animation-name: photo;
+	animation-duration: 5s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: 1;
+	animation-direction: reverse;
+	animation-fill-mode: both;
+}
+
+
+@keyframes photo {
+	0%{
+		transform: scale(1);
+		margin-top: -500px;
+		/* width: 200px; */
+		height: 200px;
+	}
+	100%{
+		transform: scale(0.1);
+		margin-top: 0;
+		/* width: 50px; */
+		height: 50px;
+	}
 }
