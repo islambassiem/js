@@ -6,13 +6,13 @@ var first = $(".names div:nth-child(1)");
 var horror = new Audio("audio/action.mp3");
 var suspense = new Audio("audio/suspense.mp3");
 var congrats = new Audio("audio/congrats.mp3");
-var crowd = new Audio("audio/crowd.mp3");
+var crowd = new Audio("audio/cut.mp3");
 var names = $('.names').children();
 var box = document.getElementById('box');
 var secondsAfterStop = 5;
 let timerLoop;
 var winnerIndex;
-var time = 30;
+var time = 10;
 let timer = document.querySelector('.timer');
 timer.innerHTML = time;
 const semicircles = document.querySelectorAll('.semicircle');
@@ -24,7 +24,7 @@ document.getElementById("start").addEventListener("click", () => {
 	timer.style.color = 'white';
 	timerLoop = setInterval(function() {
 		time--;
-		let angle = (time / 30) * 360;
+		let angle = (time / 10) * 360;
 		if(angle > 180){
 			semicircles[0].style.transform = 'rotate(180deg)';
 			semicircles[1].style.transform = `rotate(${angle}deg)`;
@@ -93,6 +93,7 @@ function stop() {
   suspense.play();
 	winnerIndex = parseInt(names[0].style.marginTop.substring(1).replace("px", "")) / height + secondsAfterStop;
 	box.classList.add('open');
+	document.querySelector('.board').style.marginTop = '100px';
 	image.classList.add('photo');
 	setTimeout(() => {
 		names[winnerIndex].classList.add('winner', 'go-inside');
@@ -100,14 +101,14 @@ function stop() {
 			if(names[winnerIndex].classList.contains('go-inside')) continue;
 			names[winnerIndex].style.display = 'none';
 		}
-	}, 30000);
+	}, 12000);
 	setTimeout(() => {
 		crowd.pause();
 		box.classList.remove('open');
 		image.classList.remove('photo');
 		document.querySelector('.refresh').style.display = 'flex';
 		document.querySelector('.board').style.marginTop = '0px';
-	}, 32000);
+	}, 14000);
 	clearInterval(timerLoop);
 	timer.innerHTML  = `<div>00</div>`;
 	timer.style.color = 'white';
