@@ -26,7 +26,7 @@ $gift = $g->fetch(PDO::FETCH_OBJ);
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Document</title>
+	<title>Lucky Draw</title>
 	<link rel="stylesheet" href="main.css" />
 	<link rel="stylesheet" href="box/box.css" />
 	<link rel="stylesheet" href="timer/timer.css" />
