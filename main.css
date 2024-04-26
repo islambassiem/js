@@ -193,9 +193,6 @@ body {
 	position: absolute;
 	z-index: 99999999;
 	text-decoration: none;
-}
-
-.refresh i{
 	font-size:100px;
 	color:#00ff62
 }

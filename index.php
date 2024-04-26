@@ -59,7 +59,15 @@ $gift = $g->fetch(PDO::FETCH_OBJ);
 		</div>
 	</div>
 	<div class="refresh">
-	<a href="index?gift=<?= ($n + 1)?>"><i class="fa-regular fa-hand-point-right"></i></a>
+		<?php 
+			if($n == 15){ ?>
+					<a href="https://party.csmonline.net/wheel">Next Stage</a>
+				<?php
+			}else{ ?>
+				<a href="index?gift=<?= ($n + 1)?>"><i class="fa-regular fa-hand-point-right"></i></a>
+				<?php
+			}
+		?>
 	</div>
 	<div class="wrapper">
 		<div class="name" id="placeholder">Next Lucky Winner</div>
